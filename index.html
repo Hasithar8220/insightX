@@ -16,7 +16,7 @@
 		<div ng-app="app" id="page-wrapper">
 
 			<!-- Header -->
-				<div id="header-wrapper">
+				<div id="header-wrapper" ng-controller="WalletController">
 					<div class="container">
 
 						<!-- Header -->
@@ -50,7 +50,7 @@
 												<li><a href="left-sidebar.html">Left Sidebar</a></li>
 												<li><a href="right-sidebar.html">Right Sidebar</a></li>
 												<li><!-- <a href="no-sidebar.html">No Sidebar</a> -->
-												<a href="#" style="display: inline; padding: 15px" class="button large icon solid fa-check-circle">Connect Wallet</a></li>
+												<a href="#" ng-click="connectWallet()"  style="display: inline; padding: 15px" class="button large icon solid fa-check-circle">Connect Wallet</a></li>
 											</ul>
 										</nav>
 
@@ -187,8 +187,13 @@
 			 <script src="node_modules/angular-material/angular-material.min.js"></script>
 			 <script src="node_modules/angular-messages/angular-messages.min.js"></script>
 
+			 <!-- Web3 integration -->
+			 <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+
 		<!-- Scripts -->
 		<script src="src/app.js?234345545fg453556h5t6s0dffddftgffgb60f6556s466f456656dd8ff30066745"></script>
+		<script src="src/controllers/WalletController.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
