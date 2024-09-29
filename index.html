@@ -30,27 +30,16 @@
 										<nav id="nav">
 											<ul>
 												<li class="current_page_item"><a href="index.html">Home</a></li>
+												
+														
+												<li ng-if="account"><a href="left-sidebar.html">Explore Market Place</a></li>
+												<li ng-if="account"><a ng-href="/setup">Create Poll</a></li>
 												<li>
-													<a href="#">Dropdown</a>
-													<ul>
-														<li><a href="#">Lorem ipsum dolor</a></li>
-														<li><a href="#">Magna phasellus</a></li>
-														<li>
-															<a href="#">Phasellus consequat</a>
-															<ul>
-																<li><a href="#">Lorem ipsum dolor</a></li>
-																<li><a href="#">Phasellus consequat</a></li>
-																<li><a href="#">Magna phasellus</a></li>
-																<li><a href="#">Etiam dolore nisl</a></li>
-															</ul>
-														</li>
-														<li><a href="#">Veroeros feugiat</a></li>
-													</ul>
-												</li>
-												<li><a href="left-sidebar.html">Left Sidebar</a></li>
-												<li><a href="right-sidebar.html">Right Sidebar</a></li>
-												<li><!-- <a href="no-sidebar.html">No Sidebar</a> -->
-												<a href="#" ng-click="connectWallet()"  style="display: inline; padding: 15px" class="button large icon solid fa-check-circle">Connect Wallet</a></li>
+													<a href="#" ng-click="connectWallet()" style="display: inline; padding: 15px" class="button large icon solid fa-check-circle">
+													  <span ng-if="!account">Connect Wallet</span>
+													  <span ng-if="account">{{account}}</span>
+													</a>
+												  </li>
 											</ul>
 										</nav>
 
@@ -193,7 +182,9 @@
 
 		<!-- Scripts -->
 		<script src="src/app.js?234345545fg453556h5t6s0dffddftgffgb60f6556s466f456656dd8ff30066745"></script>
-		<script src="src/controllers/WalletController.js"></script>
+		<script src="src/controllers/WalletController.js?1"></script>
+		<script src="src/services/Utility.js"></script>
+		<script src="src/controllers/WizardController.js?1"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>

@@ -27,23 +27,9 @@ app.listen(PORT, function () {
 );
 
 
-app.post("/api/sentimentanalyzer",  async function (req, res) {
+app.post("/api/polls/aiassistant", async function (req, res) {
 
-
-  let json;
-  if (req.body) {
-      json = req.body;
-      //console.log(json);
-  }
-
-  let cs = new CognitiveService();
-  let out = await cs.analyzeOverallSentiment(json);
-  res.json(out);
-
-});
-
-app.post("/api/clustersimilarsentiments",  async function (req, res) {
-
+  let GPT = new GPTService();
 
   let json;
   if (req.body) {
@@ -51,56 +37,16 @@ app.post("/api/clustersimilarsentiments",  async function (req, res) {
       //console.log(json);
   }
 
-  let cs = new CognitiveService();
-  let out = await cs.clusterSimilarSentiments(json);
-  res.json(out);
-
-});
-
-app.post("/api/searchsimilarresponses",  async function (req, res) {
-
-
-  let json;
-  if (req.body) {
-      json = req.body;
-      //console.log(json);
-  }
-
-  let cs = new CognitiveService();
-  //let out = await cs.searchSimilarResponses(json);
-  let out = await cs.analyzeResponses(json);
-  res.json(out);
-
-});
-
-app.post("/api/getreviews",  async function (req, res) {
-
-
-  let json;
-  if (req.body) {
-      json = req.body;
-  }
-
-  let cs = new CognitiveService();
-  let out = await cs.getReviews(json);
-  res.json(out);
-
+  let ai = await GPT.connect(json);
+  
+  res.json(ai);
 });
 
 
-app.post("/api/addreview",  async function (req, res) {
 
 
-  let json;
-  if (req.body) {
-      json = req.body;
-      //console.log(json);
-  }
 
-  let cs = new CognitiveService();
-  //let out = await cs.searchSimilarResponses(json);
-  let out = await cs.TiDBVectorSaving(json.eventid, json.pollid, json.responsetext, json.respondentid);
-  res.json(out);
 
-});
+
+
 

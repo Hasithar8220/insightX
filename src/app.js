@@ -11,6 +11,9 @@
       .when("/", {
         title: 'Web3 Market Place | InsightX',
         templateUrl: "src/views/home.html"
+      }).when("/setup", {
+        title: 'Web3 Market Place | InsightX',
+        templateUrl: "src/views/createpoll.html"
       });
 
     if (window.history && window.history.pushState) {

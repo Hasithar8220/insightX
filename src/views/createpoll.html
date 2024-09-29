@@ -1,0 +1,138 @@
+
+<style>
+  .wizard-steps {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hide all steps */
+}
+
+.wizard-steps.active {
+    display: block; /* Show only active step */
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus, textarea:focus {
+    border-color: #A0D306;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+.smallfonts {
+    font-size: 12px;
+    color: #666;
+}
+
+.wizard-nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 12px 25px;
+    background-color: #A0D306 !important;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #607e06;
+}
+
+.button:focus {
+    outline: none;
+}
+
+/* Disabled button style */
+.button:disabled,
+.button.disabled {
+    background-color: #ccc; /* Lighter background for disabled state */
+    color: #888; /* Muted text color */
+    cursor: not-allowed; /* Change cursor to indicate disabled */
+    opacity: 0.6; /* Slightly fade the button */
+}
+
+</style>
+
+
+<div class="wizard-container" ng-controller="WizardController">
+    <!-- Step 1: Create -->
+    <div id="step-1" class="wizard-steps" ng-class="{'active': step === 1}">
+        <form name="eventForm" ng-cloak>
+        <h2>Step 1: Create Poll</h2>
+    
+            <label>Topic</label>
+            <input type="text" placeholder='Workforce Trends & Hybrid Work' ng-model="event.name" ng-minlength="15"
+              required />
+            <span class="smallfonts">Minimum length is 30 characters</span>
+         
+                 
+            <label>Objective</label>
+            <textarea placeholder='To explore changing work environments, especially in the post-pandemic era, and how companies manage hybrid and remote work'
+              ng-model="event.description" required rows="2"></textarea>
+           
+        <div class="wizard-nav">
+            <button ng-disabled="eventForm.$invalid" class="button" ng-click="useAssistant()">Next</button>
+        </div>
+        </form>
+    </div>
+
+    <!-- Step 2: Details -->
+    <div id="step-2" class="wizard-steps" ng-class="{'active': step === 2}">
+        <h2>Step 2: Poll Details</h2>
+        <p><strong>Poll Question:</strong> {{ poll.question }}</p>
+      
+        <!-- Display Poll Options as a List -->
+    <label for="pollOptions">Poll Options:</label>
+    <ul>
+        <li ng-repeat="option in poll.options">{{ option }}</li>
+    </ul>
+        <div class="wizard-nav">
+            <button class="button" ng-click="prevStep()">Back</button>
+            <button class="button" ng-click="nextStep()">Next</button>
+        </div>
+    </div>
+
+    <!-- Step 3: Complete -->
+    <div id="step-3" class="wizard-steps" ng-class="{'active': step === 3}">
+        <h2>Step 3: Complete</h2>
+        <p>Poll creation is complete! Below are your poll details:</p>
+        <p><strong>Poll Question:</strong> {{ pollData.prompt }}</p>
+        <p><strong>Poll Options:</strong> {{ pollData.options }}</p>
+        <div class="wizard-nav">
+            <button class="button" ng-click="prevStep()">Back</button>
+            <button class="button" ng-click="submitPoll()">Submit</button>
+        </div>
+    </div>
+</div>
