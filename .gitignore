@@ -1,0 +1,10 @@
+node_modules
+/services/openai-quickstart-node
+/build
+/bg_services/backup from TiDB/backups
+/*.log
+*.lock
+dist 
+
+package-lock.json
+.env
