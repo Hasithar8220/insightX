@@ -35,9 +35,10 @@
 												<li ng-if="account"><a href="left-sidebar.html">Explore Market Place</a></li>
 												<li ng-if="account"><a ng-href="/setup">Create Poll</a></li>
 												<li>
-													<a href="#" ng-click="connectWallet()" style="display: inline; padding: 15px" class="button large icon solid fa-check-circle">
-													  <span ng-if="!account">Connect Wallet</span>
-													  <span ng-if="account">{{account}}</span>
+													<a href="#" ng-click="connectWallet()" style="display: inline; padding: 15px" class="button large icon solid">
+													  <span ng-if="!account"><img style="position: relative;
+														top: 8px;" src="images/wallet.svg" /> Connect Wallet</span>
+													  <span ng-if="account">{{getShortAccount(account)}}</span>
 													</a>
 												  </li>
 											</ul>

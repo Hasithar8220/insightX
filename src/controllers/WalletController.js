@@ -19,4 +19,14 @@ angular.module('app').controller('WalletController', function ($scope, $rootScop
       console.error("Wallet connection failed:", error);
     }
   };
+
+
+  $scope.getShortAccount = function(account) {
+    if (account) {
+        return account.substring(0, 3) + '....' + account.substring(account.length - 3);
+    }
+    return ''; // Return an empty string if account is not available
+};
+
+
 });
