@@ -39,7 +39,9 @@ angular.module('app')
       } catch (error) {
         console.error("Error creating poll:", error);
       }
-      alert("Poll submitted successfully!");
+
+      UtilityService.showSimpleToast("Poll submitted successfully!",7);
+      //alert("Poll submitted successfully!");
 
     };
 

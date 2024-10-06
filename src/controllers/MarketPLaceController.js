@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('MarketplaceController', function ($scope, TronService, $http) {
+  .controller('MarketplaceController', function ($scope, TronService, $http, UtilityService) {
     
     // Initialize polls array
     $scope.polls = [];
@@ -26,7 +26,7 @@ angular.module('app')
 
         // Ensure the poll is for sale
         if (!poll.isForSale) {
-          alert("Poll is not for sale!");
+            UtilityService.showSimpleToast("Poll is not for sale!",7);
           return;
         }
 

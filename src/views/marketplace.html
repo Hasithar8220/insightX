@@ -12,7 +12,7 @@
 
     /* Individual poll card */
     .poll-item {
-        background-color: white;
+        background-color: #1D202A;
         border: 1px solid #ddd;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -91,9 +91,8 @@
 
                             <div class="poll-list">
                                 <div class="poll-item" ng-repeat="poll in polls">
-                                    <h3>{{ poll.title }}</h3>
-                                    <p>{{ poll.description }}</p>
-                                    <p><strong>Price:</strong> {{ poll.price / 1000000 }} TRX</p>
+                                    
+                                    <p><strong>Price:</strong> {{ poll.price }} TRX</p>
                                     <!-- Assuming price is in SUN (smallest unit of TRX) -->
                                     <p><strong>For Sale:</strong> {{ poll.isForSale ? 'Yes' : 'No' }}</p>
                                     <p><strong>Analytics:</strong> {{ poll.analyticsCount }} views</p>
