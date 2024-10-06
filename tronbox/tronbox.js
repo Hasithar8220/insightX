@@ -21,7 +21,7 @@ Then, run the migration with:
       network_id: '1'
     },
     shasta: {
-      privateKey: '',
+      privateKey: '3f3d38f84699bfbd7b36e9e1ee5f020ed9f92800463114d3992e5843dac10d29',
       userFeePercentage: 50,
       feeLimit: 1000 * 1e6,
       fullHost: 'https://api.shasta.trongrid.io',

@@ -98,9 +98,10 @@ input:focus, textarea:focus {
 
 
 <div class="wizard-container" ng-controller="WizardController">
+    <form name="poll_order_Form" ng-cloak>
     <!-- Step 1: Create -->
     <div id="step-1" class="wizard-steps" ng-class="{'active': step === 1}">
-        <form name="eventForm" ng-cloak>
+       
         <h2>Step 1: Create Poll</h2>
     
             <label>Topic</label>
@@ -114,10 +115,12 @@ input:focus, textarea:focus {
               ng-model="event.description" required rows="2"></textarea>
            
               <div class="wizard-footer">
-            <button ng-disabled="eventForm.$invalid" class="button" ng-click="useAssistant()">Next</button>
-        </div>
-        </form>
-    </div>
+            <button ng-disabled="poll_order_Form.$invalid" class="button" ng-click="useAssistant()">Next</button>
+              </div>
+      </div>
+
+      </form>
+    
 
     <!-- Step 2: Details -->
     <div id="step-2" class="wizard-steps" ng-class="{'active': step === 2}">
@@ -135,30 +138,25 @@ input:focus, textarea:focus {
         </div>
     </div>
 
-    <!-- Step 3: Complete -->
+    <form name="poll_complete_Form" ng-cloak>
+        <!-- Step 3: Complete -->
     <div id="step-3" class="wizard-steps" ng-class="{'active': step === 3}">
         <h2>Step 3: Complete</h2>
-       
-        <form name="poll_order_Form" ng-cloak>
-           
-                <label>Recommended Sample Size</label>
-                <input type="number" placeholder='300' ng-model="poll.samplesize" ng-minlength="15"
-                  required />
-               
-                     
-                <label>Recommended Audience</label>
-                <input type="text" placeholder='Tech StartUps' ng-model="poll.audience" ng-minlength="15"
-                  required />
-               
-                <label>Price</label>
-                <input type="number" placeholder='25' ng-model="poll.price" ng-minlength="15"
-                  required />
-               
-                  <div class="wizard-footer">
+    
+        <label>Recommended Sample Size</label>
+        <input type="number" placeholder='100' ng-model="poll.samplesize" required />
+    
+        <label>Recommended Audience</label>
+        <input type="text" placeholder='Tech StartUps' ng-model="poll.audience" required />
+    
+        <label>Price</label>
+        <input type="number" placeholder='25' ng-model="poll.price" required />
+    
+        <div class="wizard-footer">
             <button class="button" ng-click="prevStep()">Back</button>
-            <button class="button" ng-click="saveproduct()">Submit</button>
+            <button ng-disabled="poll_complete_Form.$invalid" class="button" ng-click="saveProduct()">Submit</button>
+        </div>
+
         </div>
     </form>
-    </div>
-
 </div>
