@@ -55,9 +55,7 @@ angular.module('app').controller('WalletController', function ($scope, $rootScop
 
         // Retry fetching the account address with retries
         const account = await retryFetchAccount();
-        if(!account){
-          alert('Please login to your TronLink wallet extension');
-        }
+        
         $scope.account = account;
         console.log("Connected TronLink wallet:", $scope.account);
 
@@ -69,7 +67,8 @@ angular.module('app').controller('WalletController', function ($scope, $rootScop
         alert("TronLink is not installed. Please install TronLink extension.");
       }
     } catch (error) {
-      console.error("TronLink wallet connection failed:", error.message);
+      console.error("TronLink wallet connection failed:", error.message);     
+        alert('Please login to your TronLink wallet extension');     
     }
   };
 

@@ -25,11 +25,15 @@ angular.module('app')
     $scope.saveProduct = async function () {
       try {
             
-        console.log($scope.event, $scope.poll);       
-        const { title, description, audience, publiclink, pollhash, price } = $scope.poll;
+       // Hash the poll object using SHA-256
+       const pollString = JSON.stringify($scope.poll);
+       const hash = CryptoJS.SHA256(pollString).toString(CryptoJS.enc.Hex);
+       $scope.poll.pollhash = hash;
+
+       const { title, description, audience, publiclink, pollhash, price } = $scope.poll;
 
         // Call TronService to create the poll
-        const result = await TronService.createPoll(title, description, audience, publiclink, pollhash, price);
+        const result = await TronService.createPoll(pollhash, price);
         console.log("Poll successfully created", result);
 
       } catch (error) {
@@ -70,9 +74,8 @@ angular.module('app')
         $scope.poll.description = $scope.event.description;
         $scope.poll.question = re.question;
         $scope.poll.options = re.Options;
-
         $scope.poll.publiclink='https://insighx.live';
-        $scope.poll.pollhash ='4343sdsdsd89898dsdsdsd5666';
+       
 
         console.log(r, $scope.poll);
 

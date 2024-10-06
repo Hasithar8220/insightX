@@ -29,10 +29,8 @@
 									<!-- Nav -->
 										<nav id="nav">
 											<ul>
-												<li class="current_page_item"><a href="index.html">Home</a></li>
-												
-														
-												<li ng-if="account"><a href="left-sidebar.html">Explore Market Place</a></li>
+												<li class="current_page_item"><a href="/">Home</a></li>														
+												<li ng-if="account"><a ng-href="/marketplace">Explore Market Place</a></li>
 												<li ng-if="account"><a ng-href="/setup">Create Poll</a></li>
 												<li>
 													<a href="#" ng-click="connectWallet()" style="display: inline; padding: 15px" class="button large icon solid">
@@ -180,6 +178,8 @@
 			 <!-- Web3 integration -->
 			 <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 			 <script src="https://cdn.jsdelivr.net/npm/tronweb@latest/dist/TronWeb.js"></script>
+			 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
 
 
 
@@ -187,6 +187,7 @@
 		<script src="src/app.js?2"></script>
 		<script src="src/controllers/WalletController.js?12"></script>
 		<script src="src/controllers/WizardController.js?123"></script>
+		<script src="src/controllers/MarketPLaceController.js?123"></script>
 
 		<script src="src/services/Utility.js"></script>
 		<script src="src/services/TronService.js"></script>

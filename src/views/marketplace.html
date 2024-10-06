@@ -1,0 +1,110 @@
+<style>
+    /* General styling */
+
+
+    /* Poll list container */
+    .poll-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 20px;
+    }
+
+    /* Individual poll card */
+    .poll-item {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 15px;
+        padding: 20px;
+        width: 100%;
+        max-width: 320px;
+        /* Ensures a good size on mobile devices */
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .poll-item:hover {
+        transform: translateY(-5px);
+        /* Adds a hover effect */
+    }
+
+    /* Poll title */
+    .poll-item h3 {
+        font-size: 1.5rem;
+        color: #34495e;
+        margin-bottom: 10px;
+    }
+
+    /* Poll details */
+    .poll-item p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 8px;
+    }
+
+    .poll-item strong {
+        color: #2980b9;
+    }
+
+    /* Buy Now button */
+    .poll-item button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .poll-item button:disabled {
+        background-color: #bdc3c7;
+        cursor: not-allowed;
+    }
+
+    .poll-item button:hover:not(:disabled) {
+        background-color: #2980b9;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .poll-item {
+            max-width: 100%;
+            margin: 10px 0;
+        }
+    }
+</style>
+<div ng-controller="MarketplaceController">
+    <div id="main-wrapper">
+        <div class="wrapper style1">
+            <div class="inner">
+
+                <!-- Feature 1 -->
+                <section class="container box feature1">
+                    <div class="row">
+                        <div class="col-12">
+                            <header class="first major">
+                                <h2>Poll Marketplace</h2>
+                            </header>
+
+                            <div class="poll-list">
+                                <div class="poll-item" ng-repeat="poll in polls">
+                                    <h3>{{ poll.title }}</h3>
+                                    <p>{{ poll.description }}</p>
+                                    <p><strong>Price:</strong> {{ poll.price / 1000000 }} TRX</p>
+                                    <!-- Assuming price is in SUN (smallest unit of TRX) -->
+                                    <p><strong>For Sale:</strong> {{ poll.isForSale ? 'Yes' : 'No' }}</p>
+                                    <p><strong>Analytics:</strong> {{ poll.analyticsCount }} views</p>
+                                    <button ng-click="buyPoll(poll.id)" ng-disabled="!poll.isForSale">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</div>

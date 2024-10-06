@@ -1,7 +1,6 @@
 angular.module('app').service('TronService', function ($window, $q) {
     const TRON_NETWORK = 'https://api.shasta.trongrid.io';  // Using Shasta test network
-    const CONTRACT_ADDRESS = 'TEjMX1FMF4TFP9t6U96vm7M2P4n2VBzw7g';
-
+    const CONTRACT_ADDRESS = 'TLtttvj9nJjYGe6xW9EQzWNdMCJToLm5ea';
 
     // Function to interact with the smart contract
     this.getContract = async function () {
@@ -9,18 +8,14 @@ angular.module('app').service('TronService', function ($window, $q) {
     };
 
     // Create poll function
-    this.createPoll = async function (title, description, targetAudience, publicLink, pollHash, price) {
+    this.createPoll = async function (pollHash, price) {  // Only taking pollHash and price
         try {
-            console.log(title, description, targetAudience, publicLink, pollHash, price);
+            console.log(pollHash, price);
             const contract = await this.getContract();
 
             // Call the createPoll function
             const result = await contract.createPoll(
-                title,
-                description,
-                targetAudience,
-                publicLink,
-                pollHash,
+                pollHash,  // Only pass pollHash
                 price
             ).send({
                 from: window.tronWeb.defaultAddress.base58
@@ -30,6 +25,42 @@ angular.module('app').service('TronService', function ($window, $q) {
             return result;
         } catch (error) {
             console.error('Error creating poll:', error);
+            return $q.reject(error);
+        }
+    };
+
+    // Get all polls from the contract
+    this.getPolls = async function () {
+        const contract = await this.getContract();
+        const pollsCount = await contract.getPollCount().call();  // Get the number of polls
+        const pollsData = [];
+
+        // Iterate over each poll to retrieve its details
+        for (let i = 0; i < pollsCount; i++) {
+            const poll = await contract.getPoll(i).call();  // Fetch each poll's details
+            pollsData.push({
+                id: poll.id,
+                pollHash: poll.pollHash,
+                owner: poll.pollOwner,  // Updated variable name
+                price: poll.price,
+                isForSale: poll.isForSale,
+                analyticsCount: poll.analyticsCount
+            });
+        }
+
+        console.log(pollsData);
+        return pollsData;
+    };
+
+    // Buy a poll
+    this.buyPoll = async function (pollId, price) {
+        try {
+            const contract = await this.getContract();
+            const result = await contract.buyPoll(pollId).send({ callValue: price });
+            console.log('Poll Purchased:', result);
+            return result;
+        } catch (error) {
+            console.error('Error purchasing poll:', error);
             return $q.reject(error);
         }
     };
