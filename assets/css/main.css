@@ -1896,14 +1896,14 @@ input, select, textarea {
 
 		.wrapper.style1 {
 			position: relative;
-			text-shadow: 1px 1px 0 #fff;
+			/* text-shadow: 1px 1px 0 #fff; */
 			background-color: #030712;
 			
 		}
 
 		.wrapper.style3 {
 			position: relative;
-			text-shadow: 1px 1px 0 #fff;
+			/* text-shadow: 1px 1px 0 #fff; */
 			background-color: #fff;
 			background-image: url("images/bg03.png"), url("images/bg02.png");
 			background-repeat: no-repeat, repeat;
@@ -1932,7 +1932,7 @@ input, select, textarea {
 			background-color: rgba(59, 62, 69, 0.9);
 			border-radius: 8px;
 			box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.45), inset 0px 2px 1px 0px rgba(255, 255, 255, 0.15);
-			text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+			/* text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5); */
 		}
 
 		#header h1 {
@@ -1948,7 +1948,7 @@ input, select, textarea {
 
 	#footer {
 		margin-bottom: 0;
-		text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+		/* text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5); */
 		position: relative;
 		z-index: 2;
 	}
@@ -2113,7 +2113,7 @@ input, select, textarea {
 				height: 44px;
 				left: 0;
 				position: fixed;
-				text-shadow: -1px -1px 0 black;
+				/* text-shadow: -1px -1px 0 black; */
 				top: 0;
 				width: 100%;
 				z-index: 10001;

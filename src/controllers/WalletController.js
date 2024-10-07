@@ -1,4 +1,4 @@
-angular.module('app').controller('WalletController', function ($scope, $rootScope, $window, $http) {
+angular.module('app').controller('WalletController', function ($scope,UtilityService, $rootScope, $window, $http) {
 
   // Initialize Web3 for MetaMask (Ethereum)
   const web3 = new Web3(window.ethereum || "http://localhost:8545");
@@ -44,6 +44,7 @@ angular.module('app').controller('WalletController', function ($scope, $rootScop
   // Check TronLink wallet connection (TronWeb)
   $scope.connectWallet = async function () {
     try {
+      UtilityService.showSimpleToast("Connecting...",10);
       // Check if TronLink and TronWeb are available
       if (window.tronLink) {
         // Request account access via TronLink (if supported)

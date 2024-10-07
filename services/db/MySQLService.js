@@ -18,7 +18,7 @@ class MySQLService {
       port: config.isLocalDB? 3306: 4000,
       ssl:config.isLocalDB? false:  {
         minVersion: 'TLSv1.2',
-        ca: fs.readFileSync('./services/db/isrgrootx1_azure_us.pem') 
+        ca: fs.readFileSync('./services/db/cert.pem') 
      } ,
       waitForConnections: true,
       connectionLimit: 30,
