@@ -19,6 +19,9 @@ class InsightService {
             let d = new Date();
             d = this.getmysqldatetime(d);
 
+            //create link
+            json.publiclink='https://insighx.live/polls?id='+json.pollhash;
+
         //Store record in local DB
         var sql = `INSERT INTO insights (title, description, hash, publiclink,jsonobj, datetime) VALUES (?,?,?,?,?,?) `;
         console.log(sql);

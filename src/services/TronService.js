@@ -1,6 +1,6 @@
 angular.module('app').service('TronService', function ($window,InsightService, $q) {
     const TRON_NETWORK = 'https://api.shasta.trongrid.io';  // Using Shasta test network
-    const CONTRACT_ADDRESS = 'TLtttvj9nJjYGe6xW9EQzWNdMCJToLm5ea';
+    const CONTRACT_ADDRESS = 'TFkWKML8G5RpwSBUTeSuaeW2KgUJ3sCZvE';
 
     // Function to interact with the smart contract
     this.getContract = async function () {
@@ -65,6 +65,7 @@ angular.module('app').service('TronService', function ($window,InsightService, $
     // Buy a poll
     this.buyPoll = async function (pollId, price) {
         try {
+            price = price * 1000000;
             const contract = await this.getContract();
             const result = await contract.buyPoll(pollId).send({ callValue: price });
             console.log('Poll Purchased:', result);
