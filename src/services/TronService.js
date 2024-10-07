@@ -1,4 +1,4 @@
-angular.module('app').service('TronService', function ($window, $q) {
+angular.module('app').service('TronService', function ($window,InsightService, $q) {
     const TRON_NETWORK = 'https://api.shasta.trongrid.io';  // Using Shasta test network
     const CONTRACT_ADDRESS = 'TLtttvj9nJjYGe6xW9EQzWNdMCJToLm5ea';
 
@@ -38,17 +38,27 @@ angular.module('app').service('TronService', function ($window, $q) {
         // Iterate over each poll to retrieve its details
         for (let i = 0; i < pollsCount; i++) {
             const poll = await contract.getPoll(i).call();  // Fetch each poll's details
-            pollsData.push({
+            let d={};
+            d.pollHash = poll.pollHash;
+            const data = await InsightService.getmetadata(d);
+            const md= data.data;
+            console.log(md,poll);
+            let newpoll={
                 id: poll.id,
                 pollHash: poll.pollHash,
                 owner: poll.pollOwner,  // Updated variable name
                 price: poll.price,
                 isForSale: poll.isForSale,
                 analyticsCount: poll.analyticsCount
-            });
+            };
+            if(md){
+                newpoll.title=md.title;
+                newpoll.description = md.description;
+            }
+            pollsData.push(newpoll);
         }
 
-        console.log(pollsData);
+        //console.log(pollsData);
         return pollsData;
     };
 

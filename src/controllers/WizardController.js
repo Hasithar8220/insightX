@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('WizardController', function ($scope, $http, UtilityService, TronService) {
+  .controller('WizardController', function ($scope, $http, UtilityService, TronService, InsightService) {
     // Initialize the wizard state and poll data
     $scope.step = 1;
     $scope.poll = {
@@ -36,15 +36,16 @@ angular.module('app')
 
         // Call TronService to create the poll
         const result = await TronService.createPoll(pollhash, price);
+        const r = await InsightService.savemetadata($scope.poll);
 
         // call DBService to save metadata
-        console.log("Poll successfully created", result);
+        console.log("Poll successfully created", r);
 
       } catch (error) {
         console.error("Error creating poll:", error);
       }
 
-      UtilityService.showSimpleToast("Poll submitted successfully!",7);
+      UtilityService.showSimpleToast("Poll submitted successfully!",3000);
       //alert("Poll submitted successfully!");
 
     };

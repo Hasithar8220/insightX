@@ -92,11 +92,14 @@
                             <div class="poll-list">
                                 <p ng-if="loadingpolls==true">Loading...</p>
                                 <div class="poll-item" ng-repeat="poll in polls">
+
+                                    <h3 ng-if="poll.title">{{poll.title}}</h3>
+                                    <p ng-if="poll.description">{{poll.description}}</p>
                                     
                                     <p><strong>Price:</strong> {{ poll.price }} TRX</p>
                                     <!-- Assuming price is in SUN (smallest unit of TRX) -->
                                     <p><strong>For Sale:</strong> {{ poll.isForSale ? 'Yes' : 'No' }}</p>
-                                    <p><strong>Analytics:</strong> {{ poll.analyticsCount }} views</p>
+                                    <p><strong>Analytics:</strong> {{ poll.analyticsCount }} responses</p>
                                     <button ng-click="buyPoll(poll.id)" ng-disabled="!poll.isForSale">Buy Now</button>
                                 </div>
                             </div>

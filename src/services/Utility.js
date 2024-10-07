@@ -11,9 +11,7 @@ angular.module('app').service('UtilityService', function ClientService($http,$md
         if(hideDelay){
           hd=hideDelay;
         }
-  
-        
-  
+    
         // Set the position based on the device type
   const position = 'top right';
   
@@ -26,9 +24,9 @@ angular.module('app').service('UtilityService', function ClientService($http,$md
               .toastClass('custom-toast') // Use the custom CSS class here
   
           ).then(function() {
-            $log.log('Toast dismissed.');
+            console.log('Toast dismissed.');
           }).catch(function() {
-            $log.log('Toast failed or was forced to close early by another toast.');
+            console.log('Toast failed or was forced to close early by another toast.');
           });
           
         };
