@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('MarketplaceController', function ($scope, TronService, $http, UtilityService) {
+  .controller('MarketplaceController', function ($scope, TronService, $http,$routeParams, UtilityService) {
     
     // Initialize polls array
     $scope.polls = [];
@@ -41,5 +41,9 @@ angular.module('app')
         alert("Purchase failed! Please try again.");
       }
     };
+
+    $scope.getpoll = async function(){
+        alert($routeParams.id);
+    }
     
   });

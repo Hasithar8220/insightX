@@ -17,6 +17,9 @@
       }).when("/marketplace", {
         title: 'Web3 Market Place | InsightX',
         templateUrl: "src/views/marketplace.html"
+      }).when("/polls", {
+        title: 'Web3 Market Place | InsightX',
+        templateUrl: "src/views/preview.html"
       });
 
     if (window.history && window.history.pushState) {
