@@ -44,7 +44,7 @@ angular.module('app').controller('WalletController', function ($scope,UtilitySer
   // Check TronLink wallet connection (TronWeb)
   $scope.connectWallet = async function () {
     try {
-      UtilityService.showSimpleToast("Connecting...",10);
+      UtilityService.showSimpleToast("Connecting...",5000);
       // Check if TronLink and TronWeb are available
       if (window.tronLink) {
         // Request account access via TronLink (if supported)

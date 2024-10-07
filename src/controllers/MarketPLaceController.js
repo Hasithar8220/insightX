@@ -28,7 +28,7 @@ angular.module('app')
 
         // Ensure the poll is for sale
         if (!poll.isForSale) {
-            UtilityService.showSimpleToast("Poll is not for sale!",7);
+            UtilityService.showSimpleToast("Poll is not for sale!",5000);
           return;
         }
 
