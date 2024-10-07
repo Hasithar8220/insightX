@@ -34,7 +34,7 @@ angular.module('app')
 
         // Trigger the buyPoll function from the smart contract using TronService
         const result = await TronService.buyPoll(pollId, poll.price);
-        alert("Poll purchased successfully!");
+        UtilityService.showSimpleToast("Poll purchased successfully!",5000);
         $scope.loadPolls();  // Reload polls after purchase
       } catch (error) {
         console.error("Error purchasing poll:", error);

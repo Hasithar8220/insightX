@@ -100,7 +100,8 @@
                                     <!-- Assuming price is in SUN (smallest unit of TRX) -->
                                     <p><strong>For Sale:</strong> {{ poll.isForSale ? 'Yes' : 'No' }}</p>
                                     <p><strong>Analytics:</strong> {{ poll.analyticsCount }} responses</p>
-                                    <button ng-click="buyPoll(poll.id)" ng-disabled="!poll.isForSale">Buy Now</button>
+                                    <button ng-click="buyPoll(poll.id)" ng-if="poll.isForSale">Buy Now</button>
+                                    <span class="testnet" ng-if="!poll.isForSale">Sold</span>
                                 </div>
                             </div>
                         </div>

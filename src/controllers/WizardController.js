@@ -72,17 +72,12 @@ angular.module('app')
           return;
         }
 
-
-
         let re = JSON.parse(r.data);
-
         $scope.poll.title = $scope.event.name;
         $scope.poll.description = $scope.event.description;
         $scope.poll.question = re.question;
         $scope.poll.options = re.Options;
         
-       
-
         console.log(r, $scope.poll);
 
         if ($scope.step < 3) {
