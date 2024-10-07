@@ -204,6 +204,18 @@ input, select, textarea {
 		margin: 0 0 0.25em 0;
 	}
 
+	.testnet{
+		border-radius: 7px;
+    background: red;
+    padding: 2px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    left: 62px;
+    top: 4px;
+	}
+
 /* Container */
 
 	.container {
