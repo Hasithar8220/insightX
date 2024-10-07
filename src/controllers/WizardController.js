@@ -28,8 +28,6 @@ angular.module('app')
        // Hash the poll object using SHA-256
        const pollString = JSON.stringify($scope.poll);
        const hash = CryptoJS.SHA256(pollString).toString(CryptoJS.enc.Hex);
-
-       $scope.poll.publiclink='https://insighx.live/polls?id='+hash;
        $scope.poll.pollhash = hash;
 
        const { title, description, audience, publiclink, pollhash, price } = $scope.poll;
@@ -38,6 +36,7 @@ angular.module('app')
         const result = await TronService.createPoll(pollhash, price);
         const r = await InsightService.savemetadata($scope.poll);
 
+        $scope.poll.publiclink='https://insighx.live/polls?id='+hash;
         // call DBService to save metadata
         console.log("Poll successfully created", r);
 

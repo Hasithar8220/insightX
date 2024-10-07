@@ -54,6 +54,7 @@ input:focus, textarea:focus {
     margin-top: 20px;
 }
 
+
 /* Footer container for navigation buttons */
 .wizard-footer {
     display: flex;
@@ -64,6 +65,19 @@ input:focus, textarea:focus {
     position: relative;
     bottom: 0;
     width: 100%;
+}
+
+.wizard-info {
+    display: flex;
+    justify-content: space-between; /* Align buttons to opposite corners */
+    padding: 10px;
+    background-color: #323643 ; /* Web3-style dark background */
+    border-top: 1px solid #333; /* Optional: border for footer separation */
+    position: relative;
+    margin: 10 px;
+    width: 100%;
+   font-style: italic;
+   font-size: 13px;
 }
 
 .button {
@@ -151,7 +165,11 @@ input:focus, textarea:focus {
     
         <label>Price</label>
         <input type="number" placeholder='25' ng-model="poll.price" required />
-    
+
+        <div ng-if="poll.publiclink" class="wizard-info">
+            {{poll.publiclink}}
+            </div>
+
         <div class="wizard-footer">
             <button class="button" ng-click="prevStep()">Back</button>
             <button ng-disabled="poll_complete_Form.$invalid" class="button" ng-click="saveProduct()">Submit</button>
