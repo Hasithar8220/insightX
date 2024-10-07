@@ -86,10 +86,11 @@
                     <div class="row">
                         <div class="col-12">
                             <header class="first major">
-                                <h2>Buy business insights</h2>
+                                <h2>Discover Key Business Insights for Growth</h2>
                             </header>
 
                             <div class="poll-list">
+                                <p ng-if="loadingpolls==true">Loading...</p>
                                 <div class="poll-item" ng-repeat="poll in polls">
                                     
                                     <p><strong>Price:</strong> {{ poll.price }} TRX</p>

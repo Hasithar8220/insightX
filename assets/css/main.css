@@ -1803,12 +1803,12 @@ input, select, textarea {
 	}
 
 		#banner h2 {
-			/* border: solid 1px rgba(255, 255, 255, 0.25); */
+			border: solid 1px rgba(255, 255, 255, 0.25);
 			border-left: 0;
 			border-right: 0;
 			color: #fff;
 			color: rgba(255, 255, 255, 0.75);
-			font-size: 2em;
+			font-size: 30px;
 			font-weight: 700;
 			line-height: 1.3em;
 			margin: 0 0 1.5em 0;

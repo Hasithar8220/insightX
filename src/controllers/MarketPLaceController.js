@@ -7,9 +7,11 @@ angular.module('app')
     // Fetch all polls from the smart contract
     $scope.loadPolls = async function () {
       try {
+        $scope.loadingpolls = true;
         // Call the TronService to fetch the polls from the smart contract
         const polls = await TronService.getPolls();console.log(polls);
         $scope.polls = polls;
+        $scope.loadingpolls = false;
         $scope.$apply();  // Ensure UI updates with data
       } catch (error) {
         console.error("Error fetching polls:", error);
