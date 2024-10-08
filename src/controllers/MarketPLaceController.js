@@ -43,11 +43,12 @@ angular.module('app')
     };
 
     $scope.getpoll = async function(){
-        alert($routeParams.id);
+       $scope.loadingpolls=true;
         let d={};
         d.pollHash = $routeParams.id;
         let json = await InsightService.getmetadata(d);
         $scope.poll = JSON.parse(json.data.jsonobj);
+        $scope.loadingpolls=false;
     }
     
   });

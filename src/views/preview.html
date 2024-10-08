@@ -8,7 +8,7 @@
                   <div class="row">
                       <div class="col-12">
 
-
+                        <p ng-if="loadingpolls==true">Loading...</p>
 <p><strong>Poll Question:</strong> {{ poll.question }}</p>
 <ul style="list-style-type:none; position:relative;  top:12px; margin-bottom: 29px; ">
     <li ng-repeat="n in poll.options" style='margin: 10px;'>
