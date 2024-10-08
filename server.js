@@ -85,6 +85,19 @@ app.post("/api/polls/savemetadata", async function (req, res) {
   });
 
 
+  app.post("/api/polls/vote", async function (req, res) {
+
+    let IS = new InsightService(); 
+    let json;
+    if (req.body) {
+        json = req.body;
+        //console.log(json);
+    } 
+    let i = await IS.vote(json);
+    res.json(i);
+  });
+
+
 
 
 

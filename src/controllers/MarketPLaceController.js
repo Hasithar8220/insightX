@@ -50,5 +50,17 @@ angular.module('app')
         $scope.poll = JSON.parse(json.data.jsonobj);
         $scope.loadingpolls=false;
     }
+
+    $scope.vote = async function(val){
+      
+       
+       let d={};
+       d.pollhash = $routeParams.id;
+       d.vote = val;
+       let json = await InsightService.vote(d);
+       
+       UtilityService.showSimpleToast("Success!",5000);
+       
+   }
     
   });

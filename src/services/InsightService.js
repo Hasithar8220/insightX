@@ -15,6 +15,13 @@ angular.module('app').service('InsightService', function ClientService($http,$md
 
 }
 
+service.vote = async function (poll) {
+  let r = await $http.post("/api/polls/vote", JSON.stringify(poll));
+  console.log(r);
+  return r;
+
+}
+
       return service;
 
 });
