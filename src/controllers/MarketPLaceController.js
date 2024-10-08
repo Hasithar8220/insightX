@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('MarketplaceController', function ($scope, TronService, $http,$routeParams, UtilityService) {
+  .controller('MarketplaceController', function ($scope, TronService, $http,$routeParams, UtilityService, InsightService) {
     
     // Initialize polls array
     $scope.polls = [];
@@ -44,6 +44,10 @@ angular.module('app')
 
     $scope.getpoll = async function(){
         alert($routeParams.id);
+        let d={};
+        d.pollHash = $routeParams.id;
+        let json = await InsightService.getmetadata(d);
+        $scope.poll = JSON.parse(json.data.jsonobj);
     }
     
   });
