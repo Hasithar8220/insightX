@@ -36,7 +36,7 @@ angular.module('app')
         const result = await TronService.createPoll(pollhash, price);
         const r = await InsightService.savemetadata($scope.poll);
 
-        $scope.poll.publiclink='https://insighx.live/polls?id='+hash;
+        $scope.poll.publiclink='https://insightx.live/polls?id='+hash;
         // call DBService to save metadata
         console.log("Poll successfully created", r);
 

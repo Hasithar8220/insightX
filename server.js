@@ -13,9 +13,29 @@ const PORT = process.env.PORT || 8080;
 app.use(express.static("./"));
 app.use(express.json());
 
+//to resolve angularjs 404 issue
+    //In angular side we have added route config to eliminate "#!". That url change causes 404 
+    app.use(function (req, res, next) {
+
+        var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+        //console.log(fullUrl);
+        //Only for non api request calls
+        if (!fullUrl.includes('/api/', 0)) {
+            //console.log(true);
+            var d = res.status(404);
+            if (d) {
+                res.sendfile('index.html');
+            }
+        } else {
+            next();
+        }
+    });
+
  app.get("/", function (req, res) {
     res.sendFile('index.html', { root: '.' })
  });
+
+  
 
 app.listen(PORT, function () {
     console.log("Express server listening... ", PORT);
