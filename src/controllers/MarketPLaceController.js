@@ -3,6 +3,7 @@ angular.module('app')
     
     // Initialize polls array
     $scope.polls = [];
+    $scope.loadingpolls=null;
 
     // Fetch all polls from the smart contract
     $scope.loadPolls = async function () {
@@ -49,6 +50,7 @@ angular.module('app')
         let json = await InsightService.getmetadata(d);
         $scope.poll = JSON.parse(json.data.jsonobj);
         $scope.loadingpolls=false;
+        $scope.$apply();
     }
 
     $scope.vote = async function(val){

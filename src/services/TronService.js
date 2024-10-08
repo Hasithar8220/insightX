@@ -54,6 +54,7 @@ angular.module('app').service('TronService', function ($window,InsightService, $
             if(md){
                 newpoll.title=md.title;
                 newpoll.description = md.description;
+                newpoll.analyticsCount = md.responsescount;
             }
             pollsData.push(newpoll);
         }

@@ -41,8 +41,14 @@ class InsightService {
      
         //Store record in local DB
         var sql = `SELECT * FROM insights WHERE hash=?`;
-        console.log(sql);
         const results = await this.DB.runquery(sql, [json.pollHash]);
+
+        var sql2 = `SELECT count(1) as responsescount FROM votes WHERE pollhash=?`;
+        const r = await this.DB.runquery(sql2, [json.pollHash]);
+
+        let out=results[0];
+        out.responsescount = r[0].responsescount;
+
         return results[0];
         }catch(err){
             console.log(err);
