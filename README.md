@@ -1,9 +1,9 @@
 <!-- TITLE -->
-<p align="center"> 
+
  <h2 align="center">InsightX, Web3 Business Intelligence MarketPlace</h2>
  
 
-<p align="center"> 
+
   
  <h2 align="center">How to see it on live?</h2>
   Simply visit: [text](https://insightx.live/)
@@ -46,6 +46,11 @@ DB =insightx
 
 
 
+</p>
+
+<h2 align="center">Smart Contract deployed on Shasta testnet</h2>
+<p align="center">
+[text](https://shasta.tronscan.org/#/address/TFkWKML8G5RpwSBUTeSuaeW2KgUJ3sCZvE)
 </p>
 
 
